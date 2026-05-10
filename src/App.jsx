@@ -1,12 +1,23 @@
-import Header from "./components/Header";
+import { createContext, useState } from "react"
+import Layout from "./components/Layout"
 
+
+
+export const TheamContext = createContext(null);
 
 function App() {
+  
+  const [theme, setTheme ]= useState("ligth");
+
+  const toggleTheam = () => {
+    setTheme((prev) => prev === "ligth" ? "dark" : "ligth")
+  }
+
 
   return (
-    <div>
-      <Header />
-    </div>
+    <TheamContext.Provider value={{ theme, toggleTheam}}>
+      <Layout />
+    </TheamContext.Provider>
   )
 }
 

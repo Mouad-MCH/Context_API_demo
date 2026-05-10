@@ -3,11 +3,15 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+:root {
+  --color-bg : linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)
+}
+
 
 @theme {
 
   /* ===== Brand Gradient ===== */
-  --color-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  --color-primary: var(--color-bg);
   --color-primary-solid: #6366f1;
   --color-secondary-solid: #8b5cf6;
 
@@ -77,3 +81,38 @@
 }
 
 
+
+@layer base {
+  .atom {
+    @apply w-10 h-10 text-secondary-solid animate-spin transition-all duration-500;
+  }
+
+  body {
+    @apply p-4;
+  }
+
+}
+
+@layer components {
+  .header {
+    @apply mb-5 p-5 bg-primary-solid dark:bg-bg-dark w-full rounded-lg text-white flex items-center justify-between shadow-xl shadow-header;
+
+    & .header_btn {
+      @apply p-2 cursor-pointer hover:bg-btn-hover-light transition-all duration-300 border-2 border-btn-light rounded-lg flex-center gap-3;
+
+    }
+  }
+
+  .sidebare {
+    @apply p-5 text-text-light dark:bg-sidebar-dark dark:text-text-dark dark:hover:border-secondary-solid dark:shadow-card-dark bg-sidebar-light shadow-xl outline-none shadow-card-light max-w-70 rounded-lg cursor-pointer hover:shadow-card-hover hover:border-2 hover:border-border-light transition-all duration-75;
+
+    & a {
+      @apply flex items-center gap-10 w-full font-bold hover:bg-border-light dark:hover:text-text-light transition-all duration-300 rounded-lg p-3;
+    }
+  }
+
+}
+
+@utility flex-center {
+  @apply flex items-center justify-center;
+}
